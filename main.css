@@ -1,0 +1,49 @@
+body {
+    background: #24273a;
+    display: block;
+    margin: 0;
+}
+
+.divwrap {
+    border-bottom: solid;
+    background: #494d64;
+    color: #8087a2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.divwrap h1 {
+    color: #cad3f5;
+    font-size: 1.5rem;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.divwrap h1::before {
+    content: "# ";
+    color: #91d7e3;
+}
+
+#name {
+    margin-left: 10%;
+}
+#github {
+    transition: 0.5s;
+    color: #8087a2;
+    text-decoration: none;
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    background-color: #1e2030;
+    padding: 6px 13px;
+    text-decoration: none;
+    border-radius: 17px;
+    margin-right: 10%;
+}
+
+#github:hover {
+    box-shadow: 0 0 10px 10px rgba(255, 255, 255, 0.05);
+    transform: scale(1.03);
+}
