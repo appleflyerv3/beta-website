@@ -31,16 +31,17 @@ body {
     margin-left: 10%;
 }
 #github {
+    display: inline-block;
     transition: 0.5s;
     color: #8087a2;
-    text-decoration: none;
     font-family: "Inter", sans-serif;
     font-weight: 400;
     background-color: #1e2030;
-    padding: 6px 13px;
+    padding: 10px 30px;
     text-decoration: none;
     border-radius: 17px;
     margin-right: 10%;
+    text-align: center;
 }
 
 #github:hover {
