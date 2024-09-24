@@ -5,9 +5,11 @@ body {
     flex: 1;
 }
 
-h1 {
+h1,
+h3,
+h4,
+p {
     color: #cad3f5;
-    font-size: 1.5rem;
     font-family: "Inter", sans-serif;
     font-weight: 700;
     font-style: normal;
@@ -18,21 +20,41 @@ h1::before {
     color: #91d7e3;
 }
 
+h3::before {
+    content: "### ";
+    color: #91d7e3;
+}
+
+h4::before {
+    content: "#### ";
+    color: #91d7e3;
+}
+
+p::before,
+p::after {
+    content: "<p>";
+    color: #91d7e3;
+}
+
 .footerwrap {
     border-top: solid;
     background: #494d64;
     color: #8087a2;
     flex-grow: 1;
+    position: bottom;
+    bottom: 0;
+    width: 100%;
+    padding: 1rem 0;
 }
 
 .footeritems {
-    display: flex;
+    display: block;
     align-items: center;
     margin: 0 auto;
     width: 90%;
 }
 
-.divwrap {
+.navwrap {
     border-bottom: solid;
     background: #494d64;
     color: #8087a2;
@@ -43,7 +65,7 @@ h1::before {
     display: flex;
     align-items: center;
     margin: 0 auto;
-    width: 90%;
+    width: 80%;
 }
 
 .linksnav {
@@ -62,6 +84,10 @@ h1::before {
 
 .name {
     margin-left: 10%;
+}
+
+.namemain {
+    margin-left: 5%;
 }
 .links {
     display: inline-flex;
