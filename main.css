@@ -2,49 +2,82 @@ body {
     background: #24273a;
     display: block;
     margin: 0;
+    flex: 1;
+}
+
+h1 {
+    color: #cad3f5;
+    font-size: 1.5rem;
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+h1::before {
+    content: "# ";
+    color: #91d7e3;
+}
+
+.footerwrap {
+    border-top: solid;
+    background: #494d64;
+    color: #8087a2;
+    flex-grow: 1;
+}
+
+.footeritems {
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    width: 90%;
 }
 
 .divwrap {
     border-bottom: solid;
     background: #494d64;
     color: #8087a2;
+    flex-grow: 1;
+}
+
+.navitems {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    margin: 0 auto;
+    width: 90%;
 }
 
-.divwrap h1 {
-    color: #cad3f5;
-    font-size: 1.5rem;
-    font-family: "Inter", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 700;
-    font-style: normal;
+.linksnav {
+    display: flex;
+    justify-content: flex-end;
+    flex: 1;
 }
 
-.divwrap h1::before {
-    content: "# ";
-    color: #91d7e3;
+.empty {
+    all: unset;
+}
+.emoji {
+    width: 1em;
+    height: 1em;
 }
 
-#name {
+.name {
     margin-left: 10%;
 }
-#github {
-    display: inline-block;
+.links {
+    display: inline-flex;
     transition: 0.5s;
     color: #8087a2;
     font-family: "Inter", sans-serif;
     font-weight: 400;
     background-color: #1e2030;
-    padding: 10px 30px;
+    padding: 9px 26px;
     text-decoration: none;
-    border-radius: 17px;
-    margin-right: 10%;
-    text-align: center;
+    border-radius: 12px;
+    margin-right: 2%;
+    font-size: 0.9em;
 }
 
-#github:hover {
+.links:hover {
     box-shadow: 0 0 10px 10px rgba(255, 255, 255, 0.05);
     transform: scale(1.03);
 }
