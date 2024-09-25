@@ -41,10 +41,10 @@ p::after {
     background: #494d64;
     color: #8087a2;
     flex-grow: 1;
-    position: bottom;
+    position: fixed;
     bottom: 0;
     width: 100%;
-    padding: 1rem 0;
+    padding: 0.3rem 0;
 }
 
 .footeritems {
@@ -82,13 +82,6 @@ p::after {
     height: 1em;
 }
 
-.name {
-    margin-left: 10%;
-}
-
-.namemain {
-    margin-left: 5%;
-}
 .links {
     display: inline-flex;
     transition: 0.5s;
@@ -106,4 +99,21 @@ p::after {
 .links:hover {
     box-shadow: 0 0 10px 10px rgba(255, 255, 255, 0.05);
     transform: scale(1.03);
+}
+
+.links:active {
+    transition: 0.2s;
+    transform: scale(0.92)
+}
+
+.mainbody {
+    position: absolute;
+}
+
+.name {
+    margin-left: 10%;
+}
+
+#namemain {
+    margin-left: 5%;
 }
