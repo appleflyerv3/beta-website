@@ -1,0 +1,566 @@
+<!-- i vibecoded this because THERES NO TIME TO WRITE THE CODE AHH -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laufey - A Matter of Time | 3rd Album Countdown</title>
+    
+    <!-- Discord/Social Media Embeds -->
+    <meta property="og:title" content="Laufey - A Matter of Time | 3rd Album Countdown">
+    <meta property="og:description" content="Track the global release of Laufey's 3rd album 'A Matter of Time' across all timezones - August 22, 2025">
+    <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/en/2/2b/Laufey_-_A_Matter_of_Time.png">
+    <meta property="og:url" content="https://open.spotify.com/prerelease/3UWFwDMzIfiXRQjEou1GYy">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Laufey - A Matter of Time | 3rd Album Countdown">
+    <meta name="twitter:description" content="Track the global release of Laufey's 3rd album 'A Matter of Time' across all timezones - August 22, 2025">
+    <meta name="twitter:image" content="https://upload.wikimedia.org/wikipedia/en/2/2b/Laufey_-_A_Matter_of_Time.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(120, 200, 255, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 120, 200, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120, 255, 120, 0.2) 0%, transparent 50%);
+            backdrop-filter: blur(100px);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .album-cover {
+            width: 120px;
+            height: 120px;
+            border-radius: 20px;
+            box-shadow: 
+                0 20px 40px rgba(0,0,0,0.3),
+                0 0 0 1px rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .album-cover:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        .header-text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+            text-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            letter-spacing: -0.02em;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-weight: 400;
+            letter-spacing: 0.01em;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 16px;
+            background: rgba(255,255,255,0.15);
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.2);
+            letter-spacing: 0.005em;
+        }
+
+        .btn:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .btn.active {
+            background: rgba(255,255,255,0.3);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            border-color: rgba(255,255,255,0.4);
+        }
+
+        .timezone-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .timezone-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 25px;
+            box-shadow: 
+                0 8px 32px rgba(0,0,0,0.1),
+                inset 0 1px 0 rgba(255,255,255,0.2);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255,255,255,0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .timezone-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, 
+                rgba(255,255,255,0.05) 0%, 
+                transparent 50%, 
+                rgba(255,255,255,0.05) 100%);
+            pointer-events: none;
+        }
+
+        .timezone-card.active {
+            border-color: rgba(76,175,80,0.6);
+            box-shadow: 
+                0 16px 40px rgba(76,175,80,0.2),
+                0 8px 32px rgba(0,0,0,0.1),
+                inset 0 1px 0 rgba(255,255,255,0.3);
+            transform: translateY(-8px);
+            background: rgba(76,175,80,0.1);
+        }
+
+        .timezone-card.completed {
+            opacity: 0.5;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        .timezone-card.upcoming {
+            border-color: rgba(33,150,243,0.6);
+            background: rgba(33,150,243,0.08);
+        }
+
+        .timezone-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .timezone-name {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.95);
+            letter-spacing: -0.01em;
+        }
+
+        .timezone-status {
+            padding: 6px 14px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(10px);
+        }
+
+        .status-active {
+            background: rgba(76,175,80,0.9);
+            color: white;
+            box-shadow: 0 4px 12px rgba(76,175,80,0.4);
+        }
+
+        .status-completed {
+            background: rgba(158,158,158,0.8);
+            color: white;
+        }
+
+        .status-upcoming {
+            background: rgba(33,150,243,0.9);
+            color: white;
+            box-shadow: 0 4px 12px rgba(33,150,243,0.4);
+        }
+
+        .countdown {
+            font-size: 2rem;
+            font-weight: 700;
+            color: rgba(255,255,255,0.95);
+            margin: 15px 0;
+            text-align: center;
+            letter-spacing: -0.02em;
+        }
+
+        .countdown.completed {
+            color: rgba(255,255,255,0.6);
+        }
+
+        .local-time {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.8);
+            text-align: center;
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+
+        .countries {
+            margin-top: 15px;
+        }
+
+        .countries h4 {
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 10px;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .country-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .country-tag {
+            background: rgba(255,255,255,0.15);
+            color: rgba(255,255,255,0.9);
+            padding: 6px 12px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 400;
+            border: 1px solid rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            transition: all 0.2s ease;
+        }
+
+        .country-tag:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-1px);
+        }
+
+        .progress-bar {
+            background: rgba(255,255,255,0.1);
+            height: 8px;
+            border-radius: 12px;
+            margin: 20px 0;
+            overflow: hidden;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #4CAF50, #66BB6A, #81C784);
+            height: 100%;
+            transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(76,175,80,0.4);
+        }
+
+        .spotify-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(30, 215, 96, 0.9);
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .spotify-link:hover {
+            background: rgba(30, 215, 96, 1);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(30, 215, 96, 0.4);
+        }
+
+        .credits {
+            text-align: center;
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+            font-weight: 400;
+            margin-top: 40px;
+            padding: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .album-cover {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .timezone-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .controls {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .header {
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="https://upload.wikimedia.org/wikipedia/en/2/2b/Laufey_-_A_Matter_of_Time.png" 
+                 alt="Laufey - A Matter of Time Album Cover" 
+                 class="album-cover">
+            
+            <div class="header-text">
+                <h1>🎵 Laufey - A Matter of Time</h1>
+                <p>3rd Album Global Release Countdown - August 22, 2025</p>
+                
+                <a href="https://open.spotify.com/prerelease/3UWFwDMzIfiXRQjEou1GYy" 
+                   target="_blank" 
+                   class="spotify-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.84-.179-.84-.6 0-.359.24-.66.54-.78 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.242 1.021zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.42 1.56-.299.421-1.02.599-1.559.3z"/>
+                    </svg>
+                    Pre-save on Spotify
+                </a>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button class="btn active" id="showAll">Show All</button>
+            <button class="btn" id="showActive">Show Active Only</button>
+            <button class="btn" id="showUpcoming">Show Upcoming</button>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        <div class="timezone-grid" id="timezoneGrid">
+            <!-- Timezone cards will be generated here -->
+        </div>
+        
+        <div class="credits">
+            vibecoded with Claude Sonnet 4 by appleflyer
+        </div>
+    </div>
+
+    <script>
+        const timezones = [
+            { offset: 12, name: 'UTC+12', countries: ['New Zealand', 'Fiji', 'Tuvalu', 'Nauru', 'Kiribati (part)'] },
+            { offset: 11, name: 'UTC+11', countries: ['Solomon Islands', 'Vanuatu', 'New Caledonia', 'Norfolk Island'] },
+            { offset: 10, name: 'UTC+10', countries: ['Australia (East)', 'Papua New Guinea', 'Guam', 'Micronesia'] },
+            { offset: 9, name: 'UTC+9', countries: ['Japan', 'South Korea', 'Indonesia (East)', 'East Timor', 'Palau'] },
+            { offset: 8, name: 'UTC+8', countries: ['China', 'Philippines', 'Malaysia', 'Singapore', 'Taiwan', 'Mongolia'] },
+            { offset: 7, name: 'UTC+7', countries: ['Thailand', 'Vietnam', 'Cambodia', 'Laos', 'Indonesia (West)'] },
+            { offset: 6, name: 'UTC+6', countries: ['Kazakhstan (East)', 'Kyrgyzstan', 'Bangladesh', 'Bhutan'] },
+            { offset: 5, name: 'UTC+5', countries: ['Pakistan', 'Uzbekistan', 'Tajikistan', 'Turkmenistan', 'Maldives'] },
+            { offset: 4, name: 'UTC+4', countries: ['UAE', 'Oman', 'Georgia', 'Armenia', 'Azerbaijan'] },
+            { offset: 3, name: 'UTC+3', countries: ['Russia (West)', 'Saudi Arabia', 'Iraq', 'Kenya', 'Ethiopia'] },
+            { offset: 2, name: 'UTC+2', countries: ['South Africa', 'Egypt', 'Finland', 'Romania', 'Greece'] },
+            { offset: 1, name: 'UTC+1', countries: ['Germany', 'France', 'Italy', 'Spain', 'Netherlands', 'Poland'] },
+            { offset: 0, name: 'UTC±0', countries: ['UK', 'Ireland', 'Portugal', 'Ghana', 'Morocco'] },
+            { offset: -1, name: 'UTC-1', countries: ['Cape Verde', 'Azores'] },
+            { offset: -2, name: 'UTC-2', countries: ['South Georgia', 'South Sandwich Islands'] },
+            { offset: -3, name: 'UTC-3', countries: ['Brazil (East)', 'Argentina', 'Uruguay', 'French Guiana'] },
+            { offset: -4, name: 'UTC-4', countries: ['Venezuela', 'Bolivia', 'Paraguay', 'Chile (East)'] },
+            { offset: -5, name: 'UTC-5', countries: ['USA (East)', 'Canada (East)', 'Colombia', 'Peru', 'Ecuador'] },
+            { offset: -6, name: 'UTC-6', countries: ['USA (Central)', 'Canada (Central)', 'Mexico', 'Guatemala'] },
+            { offset: -7, name: 'UTC-7', countries: ['USA (Mountain)', 'Canada (Mountain)'] },
+            { offset: -8, name: 'UTC-8', countries: ['USA (Pacific)', 'Canada (Pacific)'] },
+            { offset: -9, name: 'UTC-9', countries: ['Alaska'] },
+            { offset: -10, name: 'UTC-10', countries: ['Hawaii', 'Tahiti', 'Cook Islands'] },
+            { offset: -11, name: 'UTC-11', countries: ['American Samoa', 'Niue'] },
+            { offset: -12, name: 'UTC-12', countries: ['Baker Island', 'Howland Island'] }
+        ];
+
+        let currentView = 'all';
+        const eventDate = new Date('2025-08-22T00:00:00Z');
+
+        function getEventTimeForTimezone(offset) {
+            const eventTime = new Date(eventDate);
+            eventTime.setUTCHours(eventTime.getUTCHours() - offset);
+            return eventTime;
+        }
+
+        function formatTime(ms) {
+            if (ms <= 0) return 'Event Started!';
+            
+            const days = Math.floor(ms / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((ms % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((ms % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((ms % (1000 * 60)) / 1000);
+            
+            if (days > 0) {
+                return `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            } else if (hours > 0) {
+                return `${hours}h ${minutes}m ${seconds}s`;
+            } else {
+                return `${minutes}m ${seconds}s`;
+            }
+        }
+
+        function getTimezoneStatus(timezone) {
+            const now = new Date();
+            const eventTime = getEventTimeForTimezone(timezone.offset);
+            const timeDiff = eventTime - now;
+            
+            if (Math.abs(timeDiff) < 60000) { // Within 1 minute
+                return 'active';
+            } else if (timeDiff < 0) {
+                return 'completed';
+            } else {
+                return 'upcoming';
+            }
+        }
+
+        function createTimezoneCard(timezone) {
+            const now = new Date();
+            const eventTime = getEventTimeForTimezone(timezone.offset);
+            const timeDiff = eventTime - now;
+            const status = getTimezoneStatus(timezone);
+            
+            const card = document.createElement('div');
+            card.className = `timezone-card ${status}`;
+            
+            const statusText = status === 'active' ? 'Active Now' : 
+                             status === 'completed' ? 'Completed' : 'Upcoming';
+            const statusClass = `status-${status}`;
+            
+            const localTime = eventTime.toLocaleString('en-US', {
+                weekday: 'short',
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: true
+            });
+            
+            card.innerHTML = `
+                <div class="timezone-header">
+                    <div class="timezone-name">${timezone.name}</div>
+                    <div class="timezone-status ${statusClass}">${statusText}</div>
+                </div>
+                <div class="local-time">${localTime}</div>
+                <div class="countdown ${status === 'completed' ? 'completed' : ''}">${formatTime(timeDiff)}</div>
+                <div class="countries">
+                    <h4>Countries & Regions:</h4>
+                    <div class="country-list">
+                        ${timezone.countries.map(country => `<span class="country-tag">${country}</span>`).join('')}
+                    </div>
+                </div>
+            `;
+            
+            return card;
+        }
+
+        function updateDisplay() {
+            const grid = document.getElementById('timezoneGrid');
+            grid.innerHTML = '';
+            
+            const filteredTimezones = timezones.filter(timezone => {
+                const status = getTimezoneStatus(timezone);
+                if (currentView === 'active') return status === 'active';
+                if (currentView === 'upcoming') return status === 'upcoming';
+                return true; // show all
+            });
+            
+            filteredTimezones.forEach(timezone => {
+                grid.appendChild(createTimezoneCard(timezone));
+            });
+            
+            // Update progress bar
+            const completed = timezones.filter(tz => getTimezoneStatus(tz) === 'completed').length;
+            const progress = (completed / timezones.length) * 100;
+            document.getElementById('progressFill').style.width = `${progress}%`;
+        }
+
+        // Event listeners for view controls
+        document.getElementById('showAll').addEventListener('click', () => {
+            currentView = 'all';
+            document.querySelectorAll('.btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('showAll').classList.add('active');
+            updateDisplay();
+        });
+
+        document.getElementById('showActive').addEventListener('click', () => {
+            currentView = 'active';
+            document.querySelectorAll('.btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('showActive').classList.add('active');
+            updateDisplay();
+        });
+
+        document.getElementById('showUpcoming').addEventListener('click', () => {
+            currentView = 'upcoming';
+            document.querySelectorAll('.btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('showUpcoming').classList.add('active');
+            updateDisplay();
+        });
+
+        // Update every second
+        setInterval(updateDisplay, 1000);
+        
+        // Initial display
+        updateDisplay();
+    </script>
+</body>
+</html>
